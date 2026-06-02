@@ -19,6 +19,7 @@ import { Route as AppTeamRouteImport } from './routes/_app/team'
 import { Route as AppTasksRouteImport } from './routes/_app/tasks'
 import { Route as AppReportsRouteImport } from './routes/_app/reports'
 import { Route as AppProjectsRouteImport } from './routes/_app/projects'
+import { Route as AppNotificationsRouteImport } from './routes/_app/notifications'
 import { Route as AppDashboardRouteImport } from './routes/_app/dashboard'
 import { Route as AppAiAssistantRouteImport } from './routes/_app/ai-assistant'
 
@@ -71,6 +72,11 @@ const AppProjectsRoute = AppProjectsRouteImport.update({
   path: '/projects',
   getParentRoute: () => AppRoute,
 } as any)
+const AppNotificationsRoute = AppNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppDashboardRoute = AppDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -90,6 +96,7 @@ export interface FileRoutesByFullPath {
   '/register': typeof RegisterRoute
   '/ai-assistant': typeof AppAiAssistantRoute
   '/dashboard': typeof AppDashboardRoute
+  '/notifications': typeof AppNotificationsRoute
   '/projects': typeof AppProjectsRoute
   '/reports': typeof AppReportsRoute
   '/tasks': typeof AppTasksRoute
@@ -103,6 +110,7 @@ export interface FileRoutesByTo {
   '/register': typeof RegisterRoute
   '/ai-assistant': typeof AppAiAssistantRoute
   '/dashboard': typeof AppDashboardRoute
+  '/notifications': typeof AppNotificationsRoute
   '/projects': typeof AppProjectsRoute
   '/reports': typeof AppReportsRoute
   '/tasks': typeof AppTasksRoute
@@ -118,6 +126,7 @@ export interface FileRoutesById {
   '/register': typeof RegisterRoute
   '/_app/ai-assistant': typeof AppAiAssistantRoute
   '/_app/dashboard': typeof AppDashboardRoute
+  '/_app/notifications': typeof AppNotificationsRoute
   '/_app/projects': typeof AppProjectsRoute
   '/_app/reports': typeof AppReportsRoute
   '/_app/tasks': typeof AppTasksRoute
@@ -133,6 +142,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/ai-assistant'
     | '/dashboard'
+    | '/notifications'
     | '/projects'
     | '/reports'
     | '/tasks'
@@ -146,6 +156,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/ai-assistant'
     | '/dashboard'
+    | '/notifications'
     | '/projects'
     | '/reports'
     | '/tasks'
@@ -160,6 +171,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/_app/ai-assistant'
     | '/_app/dashboard'
+    | '/_app/notifications'
     | '/_app/projects'
     | '/_app/reports'
     | '/_app/tasks'
@@ -247,6 +259,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppProjectsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/notifications': {
+      id: '/_app/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof AppNotificationsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/dashboard': {
       id: '/_app/dashboard'
       path: '/dashboard'
@@ -267,6 +286,7 @@ declare module '@tanstack/react-router' {
 interface AppRouteChildren {
   AppAiAssistantRoute: typeof AppAiAssistantRoute
   AppDashboardRoute: typeof AppDashboardRoute
+  AppNotificationsRoute: typeof AppNotificationsRoute
   AppProjectsRoute: typeof AppProjectsRoute
   AppReportsRoute: typeof AppReportsRoute
   AppTasksRoute: typeof AppTasksRoute
@@ -276,6 +296,7 @@ interface AppRouteChildren {
 const AppRouteChildren: AppRouteChildren = {
   AppAiAssistantRoute: AppAiAssistantRoute,
   AppDashboardRoute: AppDashboardRoute,
+  AppNotificationsRoute: AppNotificationsRoute,
   AppProjectsRoute: AppProjectsRoute,
   AppReportsRoute: AppReportsRoute,
   AppTasksRoute: AppTasksRoute,
