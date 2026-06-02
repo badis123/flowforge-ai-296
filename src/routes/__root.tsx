@@ -82,10 +82,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "NexaFlow is the AI-powered project & team management platform built for ambitious teams." },
       { name: "author", content: "NexaFlow" },
       { property: "og:title", content: "NexaFlow — Ship faster. Stay aligned." },
-      { property: "og:description", content: "AI-powered project & team management for ambitious teams." },
+      { property: "og:description", content: "NexaFlow is the AI-powered project & team management platform built for ambitious teams." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@NexaFlow" },
+      { name: "twitter:title", content: "NexaFlow — Ship faster. Stay aligned." },
+      { name: "twitter:description", content: "NexaFlow is the AI-powered project & team management platform built for ambitious teams." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/048974b1-ba85-479d-b21a-51b354eed7c2/id-preview-1451d30d--e711b442-7a8e-4598-a757-1cc217b35009.lovable.app-1780405118827.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/048974b1-ba85-479d-b21a-51b354eed7c2/id-preview-1451d30d--e711b442-7a8e-4598-a757-1cc217b35009.lovable.app-1780405118827.png" },
     ],
     links: [
       {
