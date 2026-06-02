@@ -20,6 +20,7 @@ import { Route as AppTasksRouteImport } from './routes/_app/tasks'
 import { Route as AppReportsRouteImport } from './routes/_app/reports'
 import { Route as AppProjectsRouteImport } from './routes/_app/projects'
 import { Route as AppDashboardRouteImport } from './routes/_app/dashboard'
+import { Route as AppAiAssistantRouteImport } from './routes/_app/ai-assistant'
 
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
@@ -75,6 +76,11 @@ const AppDashboardRoute = AppDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AppRoute,
 } as any)
+const AppAiAssistantRoute = AppAiAssistantRouteImport.update({
+  id: '/ai-assistant',
+  path: '/ai-assistant',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -82,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/register': typeof RegisterRoute
+  '/ai-assistant': typeof AppAiAssistantRoute
   '/dashboard': typeof AppDashboardRoute
   '/projects': typeof AppProjectsRoute
   '/reports': typeof AppReportsRoute
@@ -94,6 +101,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/register': typeof RegisterRoute
+  '/ai-assistant': typeof AppAiAssistantRoute
   '/dashboard': typeof AppDashboardRoute
   '/projects': typeof AppProjectsRoute
   '/reports': typeof AppReportsRoute
@@ -108,6 +116,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
   '/register': typeof RegisterRoute
+  '/_app/ai-assistant': typeof AppAiAssistantRoute
   '/_app/dashboard': typeof AppDashboardRoute
   '/_app/projects': typeof AppProjectsRoute
   '/_app/reports': typeof AppReportsRoute
@@ -122,6 +131,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/onboarding'
     | '/register'
+    | '/ai-assistant'
     | '/dashboard'
     | '/projects'
     | '/reports'
@@ -134,6 +144,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/onboarding'
     | '/register'
+    | '/ai-assistant'
     | '/dashboard'
     | '/projects'
     | '/reports'
@@ -147,6 +158,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/onboarding'
     | '/register'
+    | '/_app/ai-assistant'
     | '/_app/dashboard'
     | '/_app/projects'
     | '/_app/reports'
@@ -242,10 +254,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppDashboardRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/ai-assistant': {
+      id: '/_app/ai-assistant'
+      path: '/ai-assistant'
+      fullPath: '/ai-assistant'
+      preLoaderRoute: typeof AppAiAssistantRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
 interface AppRouteChildren {
+  AppAiAssistantRoute: typeof AppAiAssistantRoute
   AppDashboardRoute: typeof AppDashboardRoute
   AppProjectsRoute: typeof AppProjectsRoute
   AppReportsRoute: typeof AppReportsRoute
@@ -254,6 +274,7 @@ interface AppRouteChildren {
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppAiAssistantRoute: AppAiAssistantRoute,
   AppDashboardRoute: AppDashboardRoute,
   AppProjectsRoute: AppProjectsRoute,
   AppReportsRoute: AppReportsRoute,
