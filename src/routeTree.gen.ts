@@ -17,6 +17,7 @@ import { Route as AppRouteImport } from './routes/_app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppTeamRouteImport } from './routes/_app/team'
 import { Route as AppTasksRouteImport } from './routes/_app/tasks'
+import { Route as AppReportsRouteImport } from './routes/_app/reports'
 import { Route as AppProjectsRouteImport } from './routes/_app/projects'
 import { Route as AppDashboardRouteImport } from './routes/_app/dashboard'
 
@@ -59,6 +60,11 @@ const AppTasksRoute = AppTasksRouteImport.update({
   path: '/tasks',
   getParentRoute: () => AppRoute,
 } as any)
+const AppReportsRoute = AppReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppProjectsRoute = AppProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
@@ -78,6 +84,7 @@ export interface FileRoutesByFullPath {
   '/register': typeof RegisterRoute
   '/dashboard': typeof AppDashboardRoute
   '/projects': typeof AppProjectsRoute
+  '/reports': typeof AppReportsRoute
   '/tasks': typeof AppTasksRoute
   '/team': typeof AppTeamRoute
 }
@@ -89,6 +96,7 @@ export interface FileRoutesByTo {
   '/register': typeof RegisterRoute
   '/dashboard': typeof AppDashboardRoute
   '/projects': typeof AppProjectsRoute
+  '/reports': typeof AppReportsRoute
   '/tasks': typeof AppTasksRoute
   '/team': typeof AppTeamRoute
 }
@@ -102,6 +110,7 @@ export interface FileRoutesById {
   '/register': typeof RegisterRoute
   '/_app/dashboard': typeof AppDashboardRoute
   '/_app/projects': typeof AppProjectsRoute
+  '/_app/reports': typeof AppReportsRoute
   '/_app/tasks': typeof AppTasksRoute
   '/_app/team': typeof AppTeamRoute
 }
@@ -115,6 +124,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/dashboard'
     | '/projects'
+    | '/reports'
     | '/tasks'
     | '/team'
   fileRoutesByTo: FileRoutesByTo
@@ -126,6 +136,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/dashboard'
     | '/projects'
+    | '/reports'
     | '/tasks'
     | '/team'
   id:
@@ -138,6 +149,7 @@ export interface FileRouteTypes {
     | '/register'
     | '/_app/dashboard'
     | '/_app/projects'
+    | '/_app/reports'
     | '/_app/tasks'
     | '/_app/team'
   fileRoutesById: FileRoutesById
@@ -209,6 +221,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppTasksRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/reports': {
+      id: '/_app/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof AppReportsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/projects': {
       id: '/_app/projects'
       path: '/projects'
@@ -229,6 +248,7 @@ declare module '@tanstack/react-router' {
 interface AppRouteChildren {
   AppDashboardRoute: typeof AppDashboardRoute
   AppProjectsRoute: typeof AppProjectsRoute
+  AppReportsRoute: typeof AppReportsRoute
   AppTasksRoute: typeof AppTasksRoute
   AppTeamRoute: typeof AppTeamRoute
 }
@@ -236,6 +256,7 @@ interface AppRouteChildren {
 const AppRouteChildren: AppRouteChildren = {
   AppDashboardRoute: AppDashboardRoute,
   AppProjectsRoute: AppProjectsRoute,
+  AppReportsRoute: AppReportsRoute,
   AppTasksRoute: AppTasksRoute,
   AppTeamRoute: AppTeamRoute,
 }
